@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function EspiroSanto() {
+export default function Alagoas() {
     return(
         <div>
             <h1>Seja Bem-Vido á Alagoas</h1>

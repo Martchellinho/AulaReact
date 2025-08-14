@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function Amapa() {
+export default function Roraima() {
     return(
         <div>
-            <h1>Seja Bem-Vido á Amapá</h1>
+            <h1>Seja Bem-Vido ao Roraima</h1>
 
             <p>
-                <img src="/AP.png" width={500} />
+                <img src="/RR.png" width={500} />
             </p>
 
             <p>

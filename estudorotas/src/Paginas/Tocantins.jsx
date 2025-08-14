@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function Amapa() {
+export default function Tocantins() {
     return(
         <div>
-            <h1>Seja Bem-Vido á Amapá</h1>
+            <h1>Seja Bem-Vido ao Tocantins</h1>
 
             <p>
-                <img src="/AP.png" width={500} />
+                <img src="/TO.png" width={500} />
             </p>
 
             <p>
