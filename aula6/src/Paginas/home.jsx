@@ -6,7 +6,7 @@ export default function Home() {
             <h1>Estudos de Estados</h1>
 
             <ul>
-                <li><Link to = "/Exemolo1" >Exemplo1</Link></li>
+                <li><Link to = "/Exemplo1" >Exemplo1</Link></li>
                 <li><Link to = "/Exemplo2" >Exemplo2</Link></li>
             </ul>
 
