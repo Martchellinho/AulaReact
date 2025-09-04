@@ -16,12 +16,10 @@ export default function App()
         <div>
             <BrowserRouter>
              <Routes>
-
-                 
-                
                 <Route path="/" element = {<Home />} />
                 <Route path="/Exemplo1" element = {<Exemplo1 />} />
                 <Route path="/Exemplo2" element = {<Exemplo2 />} />
+
                 <Route path="/Exercicio1" element = {<Exercicio1 />} />
                 <Route path="/Exercicio2" element = {<Exercicio2 />} />
                 <Route path="/Exercicio3" element = {<Exercicio3 />} />
