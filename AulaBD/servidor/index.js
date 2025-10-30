@@ -40,27 +40,73 @@ app.get("/alunos", (req, res) => {
          console.log(erro);
          return res.status(500).json({ error: "Erro ao consultar alunos"});
      } else {
-         console.log(resultado);
-         return res.status(200).json(resultado);
+         console.log(resultados);
+         return res.status(200).json(resultados);
      }
 
    });
 });
 
-app.get("/alunos/codigo", (req, res) => {
+app.get("/alunos/:codigo", (req, res) => {
+    const { codigo } = req.params;
+
     const sql = "SLECT * FROM alunos WHERE codigo = ?";
 
     banco.query(sql, [codigo], (erro, resultado) => {
       if(erro) {
           console.log(erro);
           return res.status(500).json({ error: "Erro ao consultar alunos"});
-      } 
-      if (resultados.lenth === 0) {
+      }  else  {
           console.log(resultado);
-          return res.status(404).json([ message:"Aluno nao encontrado"]);
+          return res.status(404).json(resultado);
       }
 
       return res.status(200).json(resultados[0]);
  
     });
+});
+
+app.post("/alunos", (req, res) => {
+ const {nome, cidade, estado} = req.body;
+
+ const sql = "insert into alunos(nome, cidade, estado) values (?,?,?)";
+ 
+ banco.query(sql, [nome, cidade, estado], (erro, result) => {
+     if(erro)
+     {
+         console.log(erro);
+         return res.status(500).json({error: "Erro ao cadastrado aluno"});
+     }
+     else
+     {
+         let mensagem = `Aluno ${nome} cadastrado com sucesso com o codigo ${res}`
+         console.log(mensagem);
+         return res.status(201).json({message: mensagem });
+     }
+ })
+});
+
+app.put("/alunos/:id", (req, res) => {
+    const { id } = req.params;
+    const { nome, cidade, estado } = req.body;
+
+    const sql = "UPDATE alunos SET nome = ?, cidade = ?, estado = ? WHERE codigo = ?";
+
+    banco.query(sql, [nome, cidade, estado, id], (erro, result) => {
+    if (erro) {
+        console.log(erro);
+        return res.status(500).json({ error: "Erro ao atualizar aluno"});
+    }
+
+    if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Aluno não encontrado"});
+    }
+
+    return res.status(200).json({ message: `Aluno com ID ${id} atualizado vpm sucesso`});
+    });
+
+});
+
+app.delete("/alunos:id", (req, res) => {
+
 });
