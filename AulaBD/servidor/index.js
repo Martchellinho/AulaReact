@@ -52,13 +52,13 @@ app.get("/alunos/:codigo", (req, res) => {
 
     const sql = "SLECT * FROM alunos WHERE codigo = ?";
 
-    banco.query(sql, [codigo], (erro, resultado) => {
+    banco.query(sql, [codigo], (erro, resultados) => {
       if(erro) {
           console.log(erro);
           return res.status(500).json({ error: "Erro ao consultar alunos"});
       }  else  {
           console.log(resultado);
-          return res.status(404).json(resultado);
+          return res.status(404).json({ message: "Aluno não encontrado"});
       }
 
       return res.status(200).json(resultados[0]);
@@ -108,5 +108,20 @@ app.put("/alunos/:id", (req, res) => {
 });
 
 app.delete("/alunos:id", (req, res) => {
+    const { id } = req.params;
 
+   const sql = "DELETE FROM alunos WHERE codigo = ?";
+
+   banco.query(sql, [id], (erro, result) => {
+     if (errro) {
+        console.log(erro);
+    return res.status(500).json({ error : "Erro ao excluir aluno"});
+     }
+
+     if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Aluno não encontrado"});
+     }
+     
+     return res.status(200).json({ message: `Aluno com id ${id} excluido com sucesso`});
+   })
 });
