@@ -33,9 +33,9 @@ app.listen( PORT, () => {
 } );
 
 app.get("/alunos", (req, res) => {
-   const sql = "SLECT * FROM alunos";
+   const sql = "SeLECT * FROM alunos";
 
-   banco.query(sql, (erro, resultado) => {
+   banco.query(sql, (erro, resultados) => {
      if(erro) {
          console.log(erro);
          return res.status(500).json({ error: "Erro ao consultar alunos"});
@@ -50,7 +50,7 @@ app.get("/alunos", (req, res) => {
 app.get("/alunos/:codigo", (req, res) => {
     const { codigo } = req.params;
 
-    const sql = "SLECT * FROM alunos WHERE codigo = ?";
+    const sql = "SeLECT * FROM alunos WHERE codigo = ?";
 
     banco.query(sql, [codigo], (erro, resultados) => {
       if(erro) {
