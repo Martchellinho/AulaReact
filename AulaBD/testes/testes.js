@@ -39,7 +39,7 @@ function cadastrar()
        headers: {
            "Contenr-Type": "applicarion/json"
        },
-       body: JSON.stringify(aluno)
+       body: JSON.stringify(alunos)
    })
    .then(res => res.json())
    .then(data => {
